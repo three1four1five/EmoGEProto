@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B67CE9901E5BDA84001ACCB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE98F1E5BDA84001ACCB7 /* main.m */; };
+		B67CE9931E5BDA84001ACCB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9921E5BDA84001ACCB7 /* AppDelegate.m */; };
+		B67CE9991E5BDA84001ACCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CE9971E5BDA84001ACCB7 /* Main.storyboard */; };
+		B67CE99B1E5BDA84001ACCB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67CE99A1E5BDA84001ACCB7 /* Assets.xcassets */; };
+		B67CE99E1E5BDA84001ACCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CE99C1E5BDA84001ACCB7 /* LaunchScreen.storyboard */; };
+		B67CE9AA1E5C1A0E001ACCB7 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9A91E5C1A0E001ACCB7 /* CameraViewController.m */; };
+		B67CE9AD1E5C1CF3001ACCB7 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9AC1E5C1CF3001ACCB7 /* CameraManager.m */; };
+		B67CE9AF1E5C1D21001ACCB7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CE9AE1E5C1D21001ACCB7 /* AVFoundation.framework */; };
+		B67CE9B11E5C1DAE001ACCB7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CE9B01E5C1DAE001ACCB7 /* CoreMedia.framework */; };
+		B67CE9B51E5C21E6001ACCB7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CE9B41E5C21E6001ACCB7 /* CoreImage.framework */; };
+		B67CE9B71E5C21FA001ACCB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CE9B61E5C21FA001ACCB7 /* CoreGraphics.framework */; };
+		B67CE9B91E5C268A001ACCB7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CE9B81E5C268A001ACCB7 /* AssetsLibrary.framework */; };
+		B67CE9BC1E5C7A98001ACCB7 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9BB1E5C7A98001ACCB7 /* AlbumViewController.m */; };
+		B67CE9BF1E5D32F0001ACCB7 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9BE1E5D32F0001ACCB7 /* PhotoCell.m */; };
+		B67CE9C31E5D6609001ACCB7 /* EditViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9C21E5D6609001ACCB7 /* EditViewController.mm */; };
+		B67CE9C61E5D6B75001ACCB7 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9C51E5D6B75001ACCB7 /* ResultViewController.m */; };
+		B67CE9CA1E5D7A70001ACCB7 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9C91E5D7A70001ACCB7 /* UIImage+OpenCV.mm */; };
+		CC87D03AB6920FE07A0C30A1 /* libPods-EmoGEProto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F687E5173D4251B7C3698E /* libPods-EmoGEProto.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		45596CC4FCAE60AD4D93A59F /* Pods-EmoGEProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmoGEProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto.release.xcconfig"; sourceTree = "<group>"; };
+		9C5ED32DB11F38E4A7721EDF /* Pods-EmoGEProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmoGEProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto.debug.xcconfig"; sourceTree = "<group>"; };
+		B67CE98B1E5BDA84001ACCB7 /* EmoGEProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmoGEProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B67CE98F1E5BDA84001ACCB7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B67CE9911E5BDA84001ACCB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B67CE9921E5BDA84001ACCB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B67CE9981E5BDA84001ACCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B67CE99A1E5BDA84001ACCB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B67CE99D1E5BDA84001ACCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B67CE99F1E5BDA84001ACCB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B67CE9A81E5C1A0E001ACCB7 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		B67CE9A91E5C1A0E001ACCB7 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		B67CE9AB1E5C1CF3001ACCB7 /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
+		B67CE9AC1E5C1CF3001ACCB7 /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
+		B67CE9AE1E5C1D21001ACCB7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B67CE9B01E5C1DAE001ACCB7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B67CE9B21E5C2180001ACCB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B67CE9B41E5C21E6001ACCB7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		B67CE9B61E5C21FA001ACCB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B67CE9B81E5C268A001ACCB7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		B67CE9BA1E5C7A98001ACCB7 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
+		B67CE9BB1E5C7A98001ACCB7 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		B67CE9BD1E5D32F0001ACCB7 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		B67CE9BE1E5D32F0001ACCB7 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		B67CE9C01E5D375D001ACCB7 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		B67CE9C11E5D6609001ACCB7 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		B67CE9C21E5D6609001ACCB7 /* EditViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EditViewController.mm; sourceTree = "<group>"; };
+		B67CE9C41E5D6B75001ACCB7 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		B67CE9C51E5D6B75001ACCB7 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		B67CE9C81E5D7A70001ACCB7 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		B67CE9C91E5D7A70001ACCB7 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
+		D4F687E5173D4251B7C3698E /* libPods-EmoGEProto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EmoGEProto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B67CE9881E5BDA84001ACCB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B67CE9B91E5C268A001ACCB7 /* AssetsLibrary.framework in Frameworks */,
+				B67CE9B71E5C21FA001ACCB7 /* CoreGraphics.framework in Frameworks */,
+				B67CE9B51E5C21E6001ACCB7 /* CoreImage.framework in Frameworks */,
+				B67CE9B11E5C1DAE001ACCB7 /* CoreMedia.framework in Frameworks */,
+				B67CE9AF1E5C1D21001ACCB7 /* AVFoundation.framework in Frameworks */,
+				CC87D03AB6920FE07A0C30A1 /* libPods-EmoGEProto.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AA327FC7E4A9E7521E75EF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C5ED32DB11F38E4A7721EDF /* Pods-EmoGEProto.debug.xcconfig */,
+				45596CC4FCAE60AD4D93A59F /* Pods-EmoGEProto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7BEC0D56B197E0231FFF5758 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B67CE9B81E5C268A001ACCB7 /* AssetsLibrary.framework */,
+				B67CE9B61E5C21FA001ACCB7 /* CoreGraphics.framework */,
+				B67CE9B41E5C21E6001ACCB7 /* CoreImage.framework */,
+				B67CE9B21E5C2180001ACCB7 /* UIKit.framework */,
+				B67CE9B01E5C1DAE001ACCB7 /* CoreMedia.framework */,
+				B67CE9AE1E5C1D21001ACCB7 /* AVFoundation.framework */,
+				D4F687E5173D4251B7C3698E /* libPods-EmoGEProto.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B67CE9821E5BDA84001ACCB7 = {
+			isa = PBXGroup;
+			children = (
+				B67CE98D1E5BDA84001ACCB7 /* EmoGEProto */,
+				B67CE98C1E5BDA84001ACCB7 /* Products */,
+				4AA327FC7E4A9E7521E75EF9 /* Pods */,
+				7BEC0D56B197E0231FFF5758 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B67CE98C1E5BDA84001ACCB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B67CE98B1E5BDA84001ACCB7 /* EmoGEProto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B67CE98D1E5BDA84001ACCB7 /* EmoGEProto */ = {
+			isa = PBXGroup;
+			children = (
+				B67CE9C71E5D7A0C001ACCB7 /* utils */,
+				B67CE9911E5BDA84001ACCB7 /* AppDelegate.h */,
+				B67CE9921E5BDA84001ACCB7 /* AppDelegate.m */,
+				B67CE9AB1E5C1CF3001ACCB7 /* CameraManager.h */,
+				B67CE9AC1E5C1CF3001ACCB7 /* CameraManager.m */,
+				B67CE9A81E5C1A0E001ACCB7 /* CameraViewController.h */,
+				B67CE9A91E5C1A0E001ACCB7 /* CameraViewController.m */,
+				B67CE9BA1E5C7A98001ACCB7 /* AlbumViewController.h */,
+				B67CE9BB1E5C7A98001ACCB7 /* AlbumViewController.m */,
+				B67CE9C11E5D6609001ACCB7 /* EditViewController.h */,
+				B67CE9C21E5D6609001ACCB7 /* EditViewController.mm */,
+				B67CE9C41E5D6B75001ACCB7 /* ResultViewController.h */,
+				B67CE9C51E5D6B75001ACCB7 /* ResultViewController.m */,
+				B67CE9BD1E5D32F0001ACCB7 /* PhotoCell.h */,
+				B67CE9BE1E5D32F0001ACCB7 /* PhotoCell.m */,
+				B67CE9971E5BDA84001ACCB7 /* Main.storyboard */,
+				B67CE99A1E5BDA84001ACCB7 /* Assets.xcassets */,
+				B67CE99C1E5BDA84001ACCB7 /* LaunchScreen.storyboard */,
+				B67CE99F1E5BDA84001ACCB7 /* Info.plist */,
+				B67CE98E1E5BDA84001ACCB7 /* Supporting Files */,
+			);
+			path = EmoGEProto;
+			sourceTree = "<group>";
+		};
+		B67CE98E1E5BDA84001ACCB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B67CE98F1E5BDA84001ACCB7 /* main.m */,
+				B67CE9C01E5D375D001ACCB7 /* Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B67CE9C71E5D7A0C001ACCB7 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B67CE9C81E5D7A70001ACCB7 /* UIImage+OpenCV.h */,
+				B67CE9C91E5D7A70001ACCB7 /* UIImage+OpenCV.mm */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B67CE98A1E5BDA84001ACCB7 /* EmoGEProto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B67CE9A21E5BDA84001ACCB7 /* Build configuration list for PBXNativeTarget "EmoGEProto" */;
+			buildPhases = (
+				D18768DD91CFC474399033A6 /* [CP] Check Pods Manifest.lock */,
+				B67CE9871E5BDA84001ACCB7 /* Sources */,
+				B67CE9881E5BDA84001ACCB7 /* Frameworks */,
+				B67CE9891E5BDA84001ACCB7 /* Resources */,
+				3BE797BCAF0BAD30C317E750 /* [CP] Embed Pods Frameworks */,
+				FD97FDE938644D33D0F7E7D4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmoGEProto;
+			productName = EmoGEProto;
+			productReference = B67CE98B1E5BDA84001ACCB7 /* EmoGEProto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B67CE9831E5BDA84001ACCB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Hidetoshi Mori";
+				TargetAttributes = {
+					B67CE98A1E5BDA84001ACCB7 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 853V26HB36;
+					};
+				};
+			};
+			buildConfigurationList = B67CE9861E5BDA84001ACCB7 /* Build configuration list for PBXProject "EmoGEProto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B67CE9821E5BDA84001ACCB7;
+			productRefGroup = B67CE98C1E5BDA84001ACCB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B67CE98A1E5BDA84001ACCB7 /* EmoGEProto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B67CE9891E5BDA84001ACCB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B67CE99E1E5BDA84001ACCB7 /* LaunchScreen.storyboard in Resources */,
+				B67CE99B1E5BDA84001ACCB7 /* Assets.xcassets in Resources */,
+				B67CE9991E5BDA84001ACCB7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3BE797BCAF0BAD30C317E750 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D18768DD91CFC474399033A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD97FDE938644D33D0F7E7D4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B67CE9871E5BDA84001ACCB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B67CE9BF1E5D32F0001ACCB7 /* PhotoCell.m in Sources */,
+				B67CE9AA1E5C1A0E001ACCB7 /* CameraViewController.m in Sources */,
+				B67CE9BC1E5C7A98001ACCB7 /* AlbumViewController.m in Sources */,
+				B67CE9C31E5D6609001ACCB7 /* EditViewController.mm in Sources */,
+				B67CE9CA1E5D7A70001ACCB7 /* UIImage+OpenCV.mm in Sources */,
+				B67CE9931E5BDA84001ACCB7 /* AppDelegate.m in Sources */,
+				B67CE9AD1E5C1CF3001ACCB7 /* CameraManager.m in Sources */,
+				B67CE9901E5BDA84001ACCB7 /* main.m in Sources */,
+				B67CE9C61E5D6B75001ACCB7 /* ResultViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B67CE9971E5BDA84001ACCB7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B67CE9981E5BDA84001ACCB7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B67CE99C1E5BDA84001ACCB7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B67CE99D1E5BDA84001ACCB7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B67CE9A01E5BDA84001ACCB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B67CE9A11E5BDA84001ACCB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B67CE9A31E5BDA84001ACCB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C5ED32DB11F38E4A7721EDF /* Pods-EmoGEProto.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = armv7;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Prefix.pch";
+				INFOPLIST_FILE = EmoGEProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hmori.EmoGEProto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B67CE9A41E5BDA84001ACCB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45596CC4FCAE60AD4D93A59F /* Pods-EmoGEProto.release.xcconfig */;
+			buildSettings = {
+				ARCHS = armv7;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Prefix.pch";
+				INFOPLIST_FILE = EmoGEProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hmori.EmoGEProto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B67CE9861E5BDA84001ACCB7 /* Build configuration list for PBXProject "EmoGEProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B67CE9A01E5BDA84001ACCB7 /* Debug */,
+				B67CE9A11E5BDA84001ACCB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B67CE9A21E5BDA84001ACCB7 /* Build configuration list for PBXNativeTarget "EmoGEProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B67CE9A31E5BDA84001ACCB7 /* Debug */,
+				B67CE9A41E5BDA84001ACCB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B67CE9831E5BDA84001ACCB7 /* Project object */;
+}
