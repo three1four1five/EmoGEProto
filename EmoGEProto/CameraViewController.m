@@ -3,6 +3,8 @@
 //#import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 #import "EditViewController.h"
+#import <CoreMedia/CoreMedia.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface CameraViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *previewView;
@@ -12,6 +14,9 @@
 @property CameraManager* captureManager;  // 動画マネージャクラス
 //@property uint8_t captureType;               // キャプチャの方法(0:カメラ, 1:動画)
 @property (nonatomic, strong) CALayer* indicatorLayer;  // ピント合わせる用のレイヤ
+
+@property CIDetector *detector;
+//@property (nonatomic, strong) CALayer *faceRectLayer;
 
 @end
 
@@ -47,15 +52,24 @@
     [self.captureManager setPreview:_previewView];   // プレビューレイヤを設定
     
     // フォーカス位置を探す
-    self.indicatorLayer = [CALayer layer];
-    self.indicatorLayer.borderColor = [[UIColor whiteColor] CGColor];
-    self.indicatorLayer.borderWidth = 1.0;
-    self.indicatorLayer.frame = CGRectMake(self.view.bounds.size.width/2.0 - INDICATOR_RECT_SIZE/2.0,
-                                           self.view.bounds.size.height/2.0 - INDICATOR_RECT_SIZE/2.0,
-                                           INDICATOR_RECT_SIZE,
-                                           INDICATOR_RECT_SIZE);
-    self.indicatorLayer.hidden = NO;
-    [self.view.layer addSublayer:self.indicatorLayer];
+    _indicatorLayer = [CALayer layer];
+    _indicatorLayer.borderColor = [[UIColor yellowColor] CGColor];
+    _indicatorLayer.borderWidth = 1.0;
+    _indicatorLayer.cornerRadius = 3.0f;
+    _indicatorLayer.masksToBounds = YES;
+//    _indicatorLayer.frame = CGRectMake(self.view.bounds.size.width/2.0 - INDICATOR_RECT_SIZE/2.0,
+//                                           self.view.bounds.size.height/2.0 - INDICATOR_RECT_SIZE/2.0,
+//                                           INDICATOR_RECT_SIZE,
+//                                           INDICATOR_RECT_SIZE);
+//    self.indicatorLayer.hidden = NO;
+    [self.view.layer addSublayer:_indicatorLayer];
+
+//    _faceRectLayer = [CALayer layer];
+//    _faceRectLayer.borderColor = [UIColor yellowColor].CGColor;
+//    _faceRectLayer.borderWidth = 1.0f;
+//    _faceRectLayer.cornerRadius = 3.0f;
+//    _faceRectLayer.masksToBounds = YES;
+//    [self.view.layer addSublayer:self.faceRectLayer];
     
     // ジェスチャ監視
     UIGestureRecognizer* gr = [[UITapGestureRecognizer alloc]
@@ -68,6 +82,14 @@
     recognizer.delegate = self;
     [self.view addGestureRecognizer:recognizer];
 
+    
+    // Face detection
+    NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh
+                                                        forKey:CIDetectorAccuracy];
+    _detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                   context:nil
+                                   options:options];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,6 +238,7 @@
                                            p.y - INDICATOR_RECT_SIZE/2.0,
                                            INDICATOR_RECT_SIZE,
                                            INDICATOR_RECT_SIZE);
+    
     [self setPoint:p];
 }
 
@@ -275,12 +298,99 @@
 //}
 
 // リアルタイムにエフェクトかける場合に利用
-//-(void)videoFrameUpdate:(CGImageRef)cgImage from:(CameraManager*)captureManager {
-//UIImage* imageRotate = [CameraManager rotateImage:[UIImage imageWithCGImage:cgImage] angle:270];
-//   if(captureManager.isUsingFrontCamera)
-//       imageRotate = [self mirrorImage:imageRotate];
-//_previewView.image = imageRotate;
-//}
+-(void)videoFrameUpdate:(CGImageRef)cgImage sampleBuffer:(CMSampleBufferRef)sampleBuffer{
+//    UIImage* imageRotate = [CameraManager rotateImage:[UIImage imageWithCGImage:cgImage] angle:270];
+//    if(captureManager.isUsingFrontCamera)
+//        imageRotate = [self mirrorImage:imageRotate];
+//    _previewView.image = imageRotate;
+
+//    LOG_CURRENT_METHOD;
+    CIImage *ciImage = [[CIImage alloc] initWithCGImage:cgImage];
+    
+    
+    enum {
+        PHOTOS_EXIF_0ROW_TOP_0COL_LEFT          = 1, //   1  =  0th row is at the top, and 0th column is on the left (THE DEFAULT).
+        PHOTOS_EXIF_0ROW_TOP_0COL_RIGHT         = 2, //   2  =  0th row is at the top, and 0th column is on the right.
+        PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT      = 3, //   3  =  0th row is at the bottom, and 0th column is on the right.
+        PHOTOS_EXIF_0ROW_BOTTOM_0COL_LEFT       = 4, //   4  =  0th row is at the bottom, and 0th column is on the left.
+        PHOTOS_EXIF_0ROW_LEFT_0COL_TOP          = 5, //   5  =  0th row is on the left, and 0th column is the top.
+        PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP         = 6, //   6  =  0th row is on the right, and 0th column is the top.
+        PHOTOS_EXIF_0ROW_RIGHT_0COL_BOTTOM      = 7, //   7  =  0th row is on the right, and 0th column is the bottom.
+        PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM       = 8  //   8  =  0th row is on the left, and 0th column is the bottom.
+    };
+    
+    UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
+    NSInteger exifOrientation;
+    switch (curDeviceOrientation) {
+        case UIDeviceOrientationPortraitUpsideDown:  // Device oriented vertically, home button on the top
+            exifOrientation = PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM;
+            break;
+        case UIDeviceOrientationLandscapeLeft:       // Device oriented horizontally, home button on the right
+            exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
+            break;
+        case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
+            exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
+            break;
+        case UIDeviceOrientationPortrait:            // Device oriented vertically, home button on the bottom
+        default:
+            exifOrientation = PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP;
+            break;
+    }
+    NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:exifOrientation]
+                                                             forKey:CIDetectorImageOrientation];
+    NSArray *faceFeatures = [_detector featuresInImage:ciImage options:imageOptions];
+    CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
+    CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false);
+
+    typeof(self) __weak wself = self;
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [wself drawFaceBoxesForFeatures:faceFeatures clap:clap orientation:curDeviceOrientation];
+    });
+
+//    for (CIFaceFeature *faceFeature in faceFeatures) {
+//        //            LOG(@"faceFeature=%@", faceFeature);
+//        LOG(@"faceFeature.bounds: %@", NSStringFromCGRect(faceFeature.bounds));
+////        CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
+////        transform = CGAffineTransformTranslate(transform, 0, _previewView.bounds.size.height);
+////        // UIKit座標系に変換
+////        CGRect faceRect = CGRectApplyAffineTransform(faceFeature.bounds, transform);
+//
+//
+//    }
+}
+
+
+- (void)drawFaceBoxesForFeatures:(NSArray *)features clap:(CGRect)clap orientation:(UIDeviceOrientation)orientation {
+    
+    for (CIFaceFeature *ff in features) {
+        LOG(@"faceFeature.bounds: %@", NSStringFromCGRect(ff.bounds));
+        
+        CGRect faceRect = (CGRect){
+            ff.bounds.origin.y,
+            ff.bounds.origin.x,
+            ff.bounds.size.height,
+            ff.bounds.size.width
+        };
+        
+        // scale coordinates so they fit in the preview box, which may be scaled
+        CGFloat widthScaleBy = self.view.frame.size.width / clap.size.height;
+        CGFloat heightScaleBy = self.view.frame.size.height / clap.size.width;
+        faceRect.size.width *= widthScaleBy;
+        faceRect.size.height *= heightScaleBy;
+        faceRect.origin.x *= widthScaleBy;
+        faceRect.origin.y *= heightScaleBy;
+        
+        if (_captureManager.isUsingFrontCamera) {
+            faceRect.origin.x = self.view.frame.size.width - faceRect.origin.x - faceRect.size.width;
+        }
+        _indicatorLayer.frame = CGRectOffset(faceRect, self.view.frame.origin.x, self.view.frame.origin.y);
+        
+        CGFloat cx = CGRectGetMidX(_indicatorLayer.frame);
+        CGFloat cy = CGRectGetMidY(_indicatorLayer.frame);
+        [self setPoint:(CGPoint){cx, cy}];
+    }
+}
+
 
 
 @end

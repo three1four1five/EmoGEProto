@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6015C7B1E5EDAD8007C2F0A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6015C7A1E5EDAD8007C2F0A /* QuartzCore.framework */; };
 		B67CE9901E5BDA84001ACCB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE98F1E5BDA84001ACCB7 /* main.m */; };
 		B67CE9931E5BDA84001ACCB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CE9921E5BDA84001ACCB7 /* AppDelegate.m */; };
 		B67CE9991E5BDA84001ACCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67CE9971E5BDA84001ACCB7 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		45596CC4FCAE60AD4D93A59F /* Pods-EmoGEProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmoGEProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto.release.xcconfig"; sourceTree = "<group>"; };
 		9C5ED32DB11F38E4A7721EDF /* Pods-EmoGEProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmoGEProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmoGEProto/Pods-EmoGEProto.debug.xcconfig"; sourceTree = "<group>"; };
+		B6015C7A1E5EDAD8007C2F0A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B67CE98B1E5BDA84001ACCB7 /* EmoGEProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmoGEProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67CE98F1E5BDA84001ACCB7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B67CE9911E5BDA84001ACCB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6015C7B1E5EDAD8007C2F0A /* QuartzCore.framework in Frameworks */,
 				B67CE9B91E5C268A001ACCB7 /* AssetsLibrary.framework in Frameworks */,
 				B67CE9B71E5C21FA001ACCB7 /* CoreGraphics.framework in Frameworks */,
 				B67CE9B51E5C21E6001ACCB7 /* CoreImage.framework in Frameworks */,
@@ -91,6 +94,7 @@
 		7BEC0D56B197E0231FFF5758 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6015C7A1E5EDAD8007C2F0A /* QuartzCore.framework */,
 				B67CE9B81E5C268A001ACCB7 /* AssetsLibrary.framework */,
 				B67CE9B61E5C21FA001ACCB7 /* CoreGraphics.framework */,
 				B67CE9B41E5C21E6001ACCB7 /* CoreImage.framework */,

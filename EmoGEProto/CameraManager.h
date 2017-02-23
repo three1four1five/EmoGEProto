@@ -9,9 +9,8 @@
 // カメラマネージャデリゲート
 @protocol CameraManagerDelegate <NSObject>
 //-(void)didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL error:(NSError *)error;
-
-//@optional
-//-(void)videoFrameUpdate:(CGImageRef)cgImage from:(CameraManager*)manager;
+@optional
+- (void)videoFrameUpdate:(CGImageRef)cgImage sampleBuffer:(CMSampleBufferRef)sampleBuffer;
 @end
 
 //////////////////////////////////////////////////
