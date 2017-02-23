@@ -541,17 +541,28 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         CGImageRef cgImage = [CameraManager imageFromSampleBuffer:sampleBuffer];
         UIImage* captureImage = [UIImage imageWithCGImage:cgImage];
         CGImageRelease(cgImage);
-        
+
         // メインスレッドでの処理
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            self.videoImage = captureImage;
-            self.videoOrientaion = UIDevice.currentDevice.orientation;
-            
-            // デリゲートの存在確認後画面更新
-            //if ([self.delegate respondsToSelector:@selector(videoFrameUpdate:from:)]) {
-            //    [self.delegate videoFrameUpdate:self.videoImage.CGImage from:self];
-            //}
-        });
+//        typeof(self) __weak wself = self;
+//        dispatch_async(dispatch_get_main_queue(), ^(void) {
+//            self.videoImage = captureImage;
+//            self.videoOrientaion = UIDevice.currentDevice.orientation;
+//            
+//            // デリゲートの存在確認後画面更新
+//            if ([self.delegate respondsToSelector:@selector(videoFrameUpdate:from:)]) {
+//                [self.delegate videoFrameUpdate:self.videoImage.CGImage from:self];
+//            }
+//            
+//        });
+        
+        self.videoImage = captureImage;
+        self.videoOrientaion = UIDevice.currentDevice.orientation;
+        
+        // デリゲートの存在確認後画面更新
+        if ([self.delegate respondsToSelector:@selector(videoFrameUpdate:sampleBuffer:)]) {
+            [self.delegate videoFrameUpdate:self.videoImage.CGImage sampleBuffer:sampleBuffer];
+        }
+        
     }
 }
 
