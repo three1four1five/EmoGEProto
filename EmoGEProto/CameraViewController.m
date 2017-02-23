@@ -7,6 +7,7 @@
 @interface CameraViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *previewView;
 @property (weak, nonatomic) IBOutlet UIImageView *captureView;
+@property (weak, nonatomic) IBOutlet UILabel *scaleLabel;
 
 @property CameraManager* captureManager;  // 動画マネージャクラス
 //@property uint8_t captureType;               // キャプチャの方法(0:カメラ, 1:動画)
@@ -18,6 +19,7 @@
 
 @implementation CameraViewController {
     BOOL _isNeededToSave;
+    CGFloat _beginGestureScale;
 }
 
 - (void)viewDidLoad {
@@ -57,8 +59,15 @@
     
     // ジェスチャ監視
     UIGestureRecognizer* gr = [[UITapGestureRecognizer alloc]
-                               initWithTarget:self action:@selector(didTapGesture:)];
+                               initWithTarget:self
+                               action:@selector(didTapGesture:)];
     [self.view addGestureRecognizer:gr];
+    UIGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(pinchedGesture:)];
+    recognizer.delegate = self;
+    [self.view addGestureRecognizer:recognizer];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -208,6 +217,44 @@
                                            INDICATOR_RECT_SIZE,
                                            INDICATOR_RECT_SIZE);
     [self setPoint:p];
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]]) {
+        AVCaptureDevice *camera;
+        if(_captureManager.isUsingFrontCamera) {
+            camera = _captureManager.frontCameraDevice;
+        } else {
+            camera = _captureManager.backCameraDevice;
+        }
+        CGFloat currentZoomScale = camera.videoZoomFactor;
+        _beginGestureScale = currentZoomScale;
+    }
+    return YES;
+}
+
+// ピンチを検知
+- (void)pinchedGesture:(UIPinchGestureRecognizer *)recognizer {
+
+    AVCaptureDevice *camera;
+    if(_captureManager.isUsingFrontCamera) {
+        camera = _captureManager.frontCameraDevice;
+    } else {
+        camera = _captureManager.backCameraDevice;
+    }
+    
+    [camera lockForConfiguration:nil];
+
+    CGFloat maxZoomScale = 6.0f;
+    CGFloat minZoomScale = 1.0f;
+    
+    CGFloat currentZoomScale = _beginGestureScale * recognizer.scale;
+    currentZoomScale = MAX(currentZoomScale, minZoomScale);
+    currentZoomScale = MIN(currentZoomScale, maxZoomScale);
+
+    _scaleLabel.text = [NSString stringWithFormat:@"%f", currentZoomScale];
+    camera.videoZoomFactor = currentZoomScale;
+    [camera unlockForConfiguration];
 }
 
 #pragma -
